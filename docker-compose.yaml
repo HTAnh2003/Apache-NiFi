@@ -1,0 +1,30 @@
+services:
+  nifi:
+    image: apache/nifi:latest
+    container_name: nifi
+    ports:
+      - "8443:8443"
+    volumes:
+      - ./nifi/logs:/opt/nifi/nifi-current/logs  # Thư mục lưu trữ logs của NiFi
+      - ./nifi/conf:/opt/nifi/nifi-current/conf  # Chứa file cấu hình và định nghĩa flow (flow.xml.gz)
+      - ./nifi/database_repository:/opt/nifi/nifi-current/database_repository  # Lưu trữ thông tin trạng thái và cấu hình của NiFi
+      - ./nifi/flowfile_repository:/opt/nifi/nifi-current/flowfile_repository  # Lưu trữ metadata của FlowFile
+      - ./nifi/content_repository:/opt/nifi/nifi-current/content_repository  # Lưu trữ nội dung thực tế của FlowFile
+      - ./nifi/provenance_repository:/opt/nifi/nifi-current/provenance_repository  # Lưu trữ lịch sử xử lý của FlowFile
+    environment:
+      - SINGLE_USER_CREDENTIALS_USERNAME=tienanh
+      - SINGLE_USER_CREDENTIALS_PASSWORD=password # Thay thế bằng mật khẩu mong muốn (>12 kí tự)
+    #   - NIFI_WEB_PROXY_HOST=localhost
+      # - NIFI_SECURITY_USER_LOGIN_IDENTITY_PROVIDER=single-user-provider
+      # - NIFI_SECURITY_USER_LOGIN_IDENTITY_PROVIDER_USERNAME
+      # - NIFI_SECURITY_USER_LOGIN_IDENTITY_PROVIDER_PASSWORD
+    restart: always
+
+  mongo:
+    image: mongo:latest
+    container_name: mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - ./mongo/data:/data/db  # Thư mục lưu trữ dữ liệu của MongoDB
+    restart: always
