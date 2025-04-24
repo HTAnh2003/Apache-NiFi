@@ -27,7 +27,7 @@
 
 ## Công cụ và công nghệ sử dụng
 - **Apache NiFi**: Dùng để tạo quy trình ETL tự động hóa từ thu thập, xử lý đến lưu trữ dữ liệu.
-- **Docker và Docker Compose**: Sử dụng Docker Image của NiFi và MongoDB để thiết lập môi trường làm việc. (nếu chưa học về Docker, mình đã có upload [tại đây]("https://github.com/HTAnh2003/Big-Data") để tìm hiểu).
+- **Docker và Docker Compose**: Sử dụng Docker Image của NiFi và MongoDB để thiết lập môi trường làm việc. (nếu chưa học về Docker, mình đã có upload [tại đây](https://github.com/HTAnh2003/Big-Data) để tìm hiểu).
 - **MongoDB**: Cơ sở dữ liệu lưu trữ dữ liệu đã thu thập.
 
 ## Các bước triển khai
